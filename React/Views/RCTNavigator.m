@@ -556,4 +556,7 @@ didMoveToNavigationController:(UINavigationController *)navigationController
   }
 }
 
+- (void)animateNavigationBarHidden:(BOOL)hidden {
+  [_navigationController setNavigationBarHidden:hidden animated:YES];
+}
 @end

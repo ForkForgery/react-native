@@ -91,6 +91,7 @@ static UIView *RCTFindNavBarShadowViewInView(UIView *view)
     UINavigationBar *bar = self.navigationController.navigationBar;
     bar.barTintColor = _navItem.barTintColor;
     bar.tintColor = _navItem.tintColor;
+    bar.barStyle = _navItem.barStyle;
     bar.translucent = _navItem.translucent;
     bar.titleTextAttributes = _navItem.titleTextColor ? @{
       NSForegroundColorAttributeName: _navItem.titleTextColor

@@ -31,4 +31,5 @@
  */
 - (BOOL)requestSchedulingJavaScriptNavigation;
 
+- (void)animateNavigationBarHidden:(BOOL)hidden;
 @end

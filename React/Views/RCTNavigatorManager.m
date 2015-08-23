@@ -59,4 +59,17 @@ RCT_EXPORT_METHOD(requestSchedulingJavaScriptNavigation:(nonnull NSNumber *)reac
   }];
 }
 
+RCT_EXPORT_METHOD(animateNavigator:(nonnull NSNumber *)reactTag
+                  barHidden:(BOOL)hidden)
+{
+  [self.bridge.uiManager addUIBlock:
+   ^(__unused RCTUIManager *uiManager, RCTSparseArray *viewRegistry){
+    RCTNavigator *navigator = viewRegistry[reactTag];
+    if ([navigator isKindOfClass:[RCTNavigator class]]) {
+      [navigator animateNavigationBarHidden:hidden];
+    } else {
+      RCTLogError(@"%@ (tag #%@) is not an RCTNavigator", navigator, reactTag);
+    }
+  }];
+}
 @end

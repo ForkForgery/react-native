@@ -270,6 +270,11 @@ var NavigatorIOS = React.createClass({
     barTintColor: PropTypes.string,
 
     /**
+     * Navigation bar style, 'default' or 'black'
+     */
+    barStyle: PropTypes.string,
+
+    /**
      * The text color of the navigation bar title
      */
     titleTextColor: PropTypes.string,
@@ -441,6 +446,13 @@ var NavigatorIOS = React.createClass({
 
   _emitWillFocus: function(route: Route) {
     this.navigationContext.emit('willfocus', {route: route});
+  },
+
+  animateNavigationBarHidden: function(hidden: boolean) {
+    RCTNavigatorManager.animateNavigator(
+      React.findNodeHandle(this.refs[TRANSITIONER_REF]),
+      hidden
+    );
   },
 
   push: function(route: Route) {
@@ -615,6 +627,7 @@ var NavigatorIOS = React.createClass({
           shadowHidden={this.props.shadowHidden}
           tintColor={this.props.tintColor}
           barTintColor={this.props.barTintColor}
+          barStyle={this.props.barStyle}
           translucent={this.props.translucent !== false}
           titleTextColor={this.props.titleTextColor}>
           <Component
